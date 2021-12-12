@@ -253,15 +253,17 @@ int StudentWorld::move()
    // for (int i = 0; i < 1; i++) {
     int x{};
     int y{};
-    if (chanceForwater == 1) {
+     if (chanceForwater == 1) {
         if (1 <= rand() % 5 <= 4) {
 
             do {
                 x = rand() % 61;
                 y = rand() % 61;
             } while (isthereEarth(x, y) == true);
-
-            actorPtrs.push_back(new WaterPool(this, x, y, player));
+            if (hasSomething(x, y, type) != true) {
+                actorPtrs.push_back(new WaterPool(this, x, y, player));
+            }
+            
         }
     }
     
